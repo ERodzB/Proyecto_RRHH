@@ -545,4 +545,26 @@ public class ConexionBD {
             JOptionPane.showMessageDialog(null,"Error: "+ex);
         }
     }
+    
+    public void CreacionPuesto(String Codigo_Puesto, String Nombre_Puesto, String Descripcion_Puesto)
+            throws SQLException{
+        
+        try{
+            state = con.prepareCall("{call CreacionPuesto (?,?,?)}");
+            state.setString(1, Codigo_Puesto);
+            state.setString(2, Nombre_Puesto);
+            state.setString(3, Descripcion_Puesto);
+            //state.setString(4, this.Codigo_Empleado);
+            
+            state.execute();//Ejecuta el procedimiento
+            JOptionPane.showMessageDialog(null,"Puesto creado correctamente");
+            
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+       
+         }
+        
+    
+    }
 }

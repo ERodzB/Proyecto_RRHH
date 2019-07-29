@@ -284,3 +284,11 @@ create procedure ObtenerPass
 	GO
 
 
+--Nuevo Puesto
+create procedure CreacionPuesto
+@codigo int, @nombre varchar(100), @descripcion varchar(200)
+as
+begin 
+	insert into Puesto (Codigo_Puesto, Nombre_Puesto, Descripcion_Puesto)
+	values ( @codigo, @nombre, @descripcion)
+end
