@@ -759,4 +759,134 @@ public class ConexionBD {
         }
         return res;
     }
+    public boolean VerificarEmpleado(String Cod_Empleado){
+        String Contra="";
+        try{
+            state=con.prepareCall("{call VerificaEmpleado (?)}");
+            state.setString(1, Cod_Empleado);
+            result = state.executeQuery();
+                while(result.next()){
+                    Contra=result.getString(1);
+                }
+                //JOptionPane.showMessageDialog(null,Contra);
+            if(Contra.contains("1"))
+                return true;
+            else
+                return false;
+        }
+        catch(SQLException ex){
+           JOptionPane.showMessageDialog(null,"Error: "+ex);
+           return false;
+        }
+    }
+        
+        
+    public String NombreEmpleado(String Cod_Empleado)
+    {
+        String Contra="";
+        try{
+            state=con.prepareCall("{call NombreEmpleado (?)}");
+            state.setString(1, Cod_Empleado);
+            result = state.executeQuery();
+            while(result.next()){
+            Contra=result.getString(1);
+            }
+            return Contra;
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+            return "";
+        }
+    }
+    
+    public String CorreoEmpleado(String Cod_Empleado)
+    {
+        String Contra="";
+        try{
+            state=con.prepareCall("{call CorreoEmpleado (?)}");
+            state.setString(1, Cod_Empleado);
+            result = state.executeQuery();
+            while(result.next()){
+            Contra=result.getString(1);
+            }
+            return Contra;
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+            return "";
+        }
+    }
+    
+        public String DireccionEmpleado(String Cod_Empleado)
+    {
+        String Contra="";
+        try{
+            state=con.prepareCall("{call DireccionEmpleado (?)}");
+            state.setString(1, Cod_Empleado);
+            result = state.executeQuery();
+            while(result.next()){
+            Contra=result.getString(1);
+            }
+            return Contra;
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+            return "";
+        }
+    }
+    
+        
+        public String SueldoEmpleado(String Cod_Empleado)
+    {
+        String Contra="";
+        try{
+            state=con.prepareCall("{call SueldoEmpleado (?)}");
+            state.setString(1, Cod_Empleado);
+            result = state.executeQuery();
+            while(result.next()){
+            Contra=result.getString(1);
+            }
+            return Contra;
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+            return "";
+        }
+    }
+        
+    public String GeneroEmpleado(String Cod_Empleado)
+    {
+        String Contra="";
+        try{
+            state=con.prepareCall("{call GeneroEmpleado (?)}");
+            state.setString(1, Cod_Empleado);
+            result = state.executeQuery();
+            while(result.next()){
+            Contra=result.getString(1);
+            }
+            return Contra;
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+            return "";
+        }
+    }
+    
+    public String PuestoEmpleado(String Cod_Empleado)
+    {
+        String Contra="";
+        try{
+            state=con.prepareCall("{call PuestoEmpleado (?)}");
+            state.setString(1, Cod_Empleado);
+            result = state.executeQuery();
+            while(result.next()){
+            Contra=result.getString(1);
+            }
+            return Contra;
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+            return "";
+        }
+    }
 }
