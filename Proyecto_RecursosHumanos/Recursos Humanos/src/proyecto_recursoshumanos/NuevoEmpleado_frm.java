@@ -206,7 +206,7 @@ public class NuevoEmpleado_frm extends javax.swing.JPanel {
         String valNom ="[0-9.]";
         String a=Character.toString(evt.getKeyChar()) ;
             
-          if(!a.matches(valNom)|| sueldo_tf.getText().length()>=10000 ){
+          if(!a.matches(valNom)|| sueldo_tf.getText().length()>=100 ){
             evt.consume();
             
         }

@@ -187,7 +187,7 @@ public class Bonos_frm extends javax.swing.JPanel {
         String valNom ="[0-9.]";
         String a=Character.toString(evt.getKeyChar()) ;
             
-          if(!a.matches(valNom)|| txtBono.getText().length()>=100000 ){
+          if(!a.matches(valNom)|| txtBono.getText().length()>=100 ){
             evt.consume();
             
         }

@@ -135,6 +135,11 @@ public class Despido_Renuncia_Empleados extends javax.swing.JPanel {
         add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 392, -1));
 
         txtPorcPrestaciones.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtPorcPrestaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPorcPrestacionesKeyTyped(evt);
+            }
+        });
         add(txtPorcPrestaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 392, -1));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -224,9 +229,10 @@ public class Despido_Renuncia_Empleados extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "ERROR, Debe seleccionar una accion a realizar", "ERROR",0);
         }
         else
-        if(Double.parseDouble(txtPorcPrestaciones.getText())<25.0 ||Double.parseDouble(txtPorcPrestaciones.getText())>1000.0  )
+        if(Double.parseDouble(txtPorcPrestaciones.getText())<25.0 ||Double.parseDouble(txtPorcPrestaciones.getText())>1000.0  ||!txtPorcPrestaciones.getText().matches("^([1-9]{1})([0-9]{1,2})?$"))
         {
             JOptionPane.showMessageDialog(null, "ERROR, El porcentaje de Prestaciones no puede ser menor que 25%, ni mayor que 1000%", "ERROR",0);
+            txtPorcPrestaciones.setText("");
         }
         else
             {
@@ -250,6 +256,17 @@ public class Despido_Renuncia_Empleados extends javax.swing.JPanel {
             control=3;
         }
     }//GEN-LAST:event_cmbAccionesActionPerformed
+
+    private void txtPorcPrestacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPorcPrestacionesKeyTyped
+        // TODO add your handling code here:
+        String valNom ="[0-9.]";
+        String a=Character.toString(evt.getKeyChar()) ;
+            
+          if(!a.matches(valNom)|| txtPorcPrestaciones.getText().length()>=3 ){
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtPorcPrestacionesKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
