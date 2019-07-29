@@ -87,8 +87,25 @@ public class ConexionBD {
             JOptionPane.showMessageDialog(null,"Error: "+ex);
        
          }
+    }
+     public void RenunciaDespido(String Codigo_Empleado, Integer accion, Double monto)
+            throws SQLException{
         
-    
+        try{
+            state = con.prepareCall("{call RenunciaDespido (?,?,?,?)}");
+            state.setString(1, Codigo_Empleado);
+            state.setInt(2, accion);
+            state.setString(3, this.Codigo_Empleado);
+            state.setDouble(4, monto);
+            
+            state.execute();//Ejecuta el procedimiento
+            JOptionPane.showMessageDialog(null,"Cambios Realizados con Exito");
+            
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+       
+         }
     }
     public int validacionUsuario(String Codigo_Usuario){
         Integer encontrado=0;
@@ -192,6 +209,35 @@ public class ConexionBD {
         
         return model;
     }
+          public DefaultTableModel MostrarDatosEmpleadosRenuncia()
+    {
+        DefaultTableModel model = new DefaultTableModel();
+
+            model.addColumn("Identidad");
+            model.addColumn("Nombre");
+            model.addColumn("Nivel del Empleado");
+            model.addColumn("Sueldo");
+             try {
+                Integer tamtabla=4;
+                state = con.prepareCall("{call DVGEmpleadoRenuncia}");
+                result = state.executeQuery();
+                while(result.next())
+                {
+                    Object dato [] = new Object[tamtabla];
+                    for(int i = 0; i<tamtabla; i++)
+                    {
+                        dato[i] = result.getString(i+1);
+                    }
+                    model.addRow(dato);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+        return model;
+    }
+     
   public DefaultTableModel filtrarEmpleados(int tipo, String filtro, int filtrox)
             throws SQLException{
         DefaultTableModel model = new DefaultTableModel();
@@ -442,6 +488,7 @@ public class ConexionBD {
         return model;
        
     }
+    
     public void CambiarPassword(String Codigo_Usuario, String Password_Usuario){
         try{
             state = con.prepareCall("{call CambiarPassword (?,?)}");
@@ -545,7 +592,6 @@ public class ConexionBD {
             JOptionPane.showMessageDialog(null,"Error: "+ex);
         }
     }
-    
     public void CreacionPuesto(String Nombre_Puesto, String Descripcion_Puesto)
           {
         

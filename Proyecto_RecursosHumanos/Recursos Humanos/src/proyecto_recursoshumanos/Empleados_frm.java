@@ -109,6 +109,9 @@ public class Empleados_frm extends javax.swing.JPanel {
 
     private void despidoRenuncias_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despidoRenuncias_btnActionPerformed
         // TODO add your handling code here:
+        Despido_Renuncia_Empleados desEmp = new Despido_Renuncia_Empleados();
+        Design estetica = new Design();
+        estetica.AbrirFormulario(empleados_panel, desEmp);
     }//GEN-LAST:event_despidoRenuncias_btnActionPerformed
 
     private void nuevoEmpleado_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoEmpleado_btnActionPerformed

@@ -29,6 +29,7 @@ public class ConsultaEmpleados extends javax.swing.JPanel {
         btnDatosPersonales.setVisible(false);
         btnDatosPersonales1.setVisible(false);
         btnDatosPersonales1.setEnabled(false);
+        btnremoverfiltro.setVisible(false);
         //this.setLayout();
        
         JTableHeader header = tblEmpleados.getTableHeader();
@@ -43,6 +44,7 @@ public class ConsultaEmpleados extends javax.swing.JPanel {
         } 
         else
         {
+            btnDatosPersonales1.setText("Remover Filtro");
             btnDatosPersonales1.setVisible(true);
             btnDatosPersonales.setEnabled(false);
         }
@@ -68,6 +70,7 @@ public class ConsultaEmpleados extends javax.swing.JPanel {
           ComboFiltro.setModel(combo1);
           ComboFiltro.setSelectedIndex(-1);
           combofiltrox.setSelectedIndex(-1);
+          
     }
     public void cargarComboboxfiltrox(String filtro){
           if("Puesto".equals(filtro))
@@ -104,6 +107,7 @@ public class ConsultaEmpleados extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnFiltrar = new javax.swing.JButton();
+        btnremoverfiltro = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1030, 700));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -153,7 +157,7 @@ public class ConsultaEmpleados extends javax.swing.JPanel {
         add(ComboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 464, 199, -1));
 
         combofiltrox.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        combofiltrox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combofiltrox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Porfavor Escoger una columna" }));
         add(combofiltrox, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 464, 200, -1));
 
         btnDatosPersonales.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -191,7 +195,16 @@ public class ConsultaEmpleados extends javax.swing.JPanel {
                 btnFiltrarActionPerformed(evt);
             }
         });
-        add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 200, -1));
+        add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 510, 200, -1));
+
+        btnremoverfiltro.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btnremoverfiltro.setText("Remover Filtro");
+        btnremoverfiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnremoverfiltroActionPerformed(evt);
+            }
+        });
+        add(btnremoverfiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 200, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmpleadosMouseClicked
@@ -229,8 +242,9 @@ public class ConsultaEmpleados extends javax.swing.JPanel {
 
     private void ComboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboFiltroActionPerformed
         // TODO add your handling code here:
-
+        
         cargarComboboxfiltrox(String.valueOf(ComboFiltro.getSelectedItem()));
+
     }//GEN-LAST:event_ComboFiltroActionPerformed
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
@@ -253,9 +267,19 @@ public class ConsultaEmpleados extends javax.swing.JPanel {
                    JOptionPane.showMessageDialog(null, "Elementos Filtrados con Éxito", "Exito",1); 
            }
             btnDatosPersonales1.setEnabled(true);
+        
+            if(Integer.parseInt(ConexionBD.Nivel_Autoridad)==1){
+           btnremoverfiltro.setVisible(true);
+        }
            
 
     }//GEN-LAST:event_btnFiltrarActionPerformed
+
+    private void btnremoverfiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnremoverfiltroActionPerformed
+        // TODO add your handling code here:
+         MostrarDatosEmpleados(controlador);
+         btnremoverfiltro.setVisible(false);
+    }//GEN-LAST:event_btnremoverfiltroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -263,6 +287,7 @@ public class ConsultaEmpleados extends javax.swing.JPanel {
     private javax.swing.JButton btnDatosPersonales;
     private javax.swing.JButton btnDatosPersonales1;
     private javax.swing.JButton btnFiltrar;
+    private javax.swing.JButton btnremoverfiltro;
     private javax.swing.JComboBox<String> combofiltrox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
