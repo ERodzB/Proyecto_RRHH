@@ -151,7 +151,7 @@ public class Bonos_frm extends javax.swing.JPanel {
     private void tblEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmpleadosMouseClicked
         // TODO add your handling code here:
         txtEmpleado.setText(tblEmpleados.getValueAt(tblEmpleados.getSelectedRow(),1).toString());
-        txtBono.enable(true);
+        txtBono.setEnabled(true);
         
         emple = tblEmpleados.getValueAt(tblEmpleados.getSelectedRow(),0).toString();
     }//GEN-LAST:event_tblEmpleadosMouseClicked
@@ -164,7 +164,7 @@ public class Bonos_frm extends javax.swing.JPanel {
                 errores[cant]="Seleccione a un empleado para asignarle un bono";
                 cant++;             
             }
-            if(!txtBono.getText().matches("(\\d)(?=(\\d{3})+)")){
+            if(txtBono.getText().matches("(\\d)(?=(\\d{3})+)")){
                 errores[cant]="Asigne un bono mayor a 100";
                 cant++;              
             }
@@ -173,8 +173,8 @@ public class Bonos_frm extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null,errores);
             }
             else{
-                con.AgregarBono(code, emple, Double.parseDouble(txtBono.getText()));
-               JOptionPane.showMessageDialog(null, "Se ah Agregado el Bono exitosamente");
+               con.AgregarBono(code, emple, Double.parseDouble(txtBono.getText()));
+               JOptionPane.showMessageDialog(null, "Se ha Agregado el Bono exitosamente");
                MostrarEmpleados();
                txtBono.setText(" ");
                txtEmpleado.setText(" ");   

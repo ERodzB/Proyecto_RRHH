@@ -164,8 +164,8 @@ public class ModificarPuesto_frm extends javax.swing.JPanel {
         txtPuesto.setText(tblPuesto.getValueAt(tblPuesto.getSelectedRow(),1).toString());
         txtDescripcion.setText(tblPuesto.getValueAt(tblPuesto.getSelectedRow(),2).toString());
         
-        txtPuesto.enable(true);
-        txtDescripcion.enable(true);
+        txtPuesto.setEnabled(true);
+        txtDescripcion.setEnabled(true);
         
     }//GEN-LAST:event_tblPuestoMouseClicked
 
@@ -177,7 +177,7 @@ public class ModificarPuesto_frm extends javax.swing.JPanel {
                 cant++;
                 txtPuesto.setText("");
             }
-            if(txtDescripcion.getText().matches("^([a-zA-z]{3,})+([a-zA-Z ]{2,})")){
+            if(!txtDescripcion.getText().matches("^([a-zA-z]{3,})+([a-zA-Z ]{2,})")){
                 errores[cant]="Descripcion de Puesto incorrecto";
                 txtDescripcion.setText("");
                 cant++;
@@ -187,7 +187,7 @@ public class ModificarPuesto_frm extends javax.swing.JPanel {
             }
             else{
                 con.ModificacionPuestos(cod, txtPuesto.getText(), txtDescripcion.getText());
-                JOptionPane.showMessageDialog(null, "Se ah Modificado el Puesto exitosamente");
+                JOptionPane.showMessageDialog(null, "Se ha Modificado el Puesto exitosamente");
                 MostrarPuesto();
             }
             

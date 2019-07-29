@@ -31,8 +31,8 @@ public class nuevoUsuario_frm extends javax.swing.JPanel {
         empleado_tbl.setModel(con.CargarEmpleadosSinUser());
         cbTipoAcceso.setModel(con.cargarComboAcceso());
         cbTipoAcceso.setSelectedIndex(-1);
-        cbEstado.setModel(con.cargarComboEstado());
-        cbEstado.setSelectedIndex(-1);
+        //cbEstado.setModel(con.cargarComboEstado());
+        //cbEstado.setSelectedIndex(-1);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,7 +43,6 @@ public class nuevoUsuario_frm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cbEstado = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         Ingresar = new javax.swing.JButton();
@@ -51,7 +50,6 @@ public class nuevoUsuario_frm extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cbTipoAcceso = new javax.swing.JComboBox<String>();
-        jLabel5 = new javax.swing.JLabel();
         codusu = new javax.swing.JTextField();
         pw_pf = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
@@ -62,14 +60,6 @@ public class nuevoUsuario_frm extends javax.swing.JPanel {
         empleado_tbl = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        cbEstado.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        cbEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbEstadoActionPerformed(evt);
-            }
-        });
-        add(cbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, 218, -1));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel7.setText("Favor Ingresar la Siguiente Informacion");
@@ -107,10 +97,6 @@ public class nuevoUsuario_frm extends javax.swing.JPanel {
             }
         });
         add(cbTipoAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 218, -1));
-
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        jLabel5.setText("Estado:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, -1));
 
         codusu.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         codusu.addActionListener(new java.awt.event.ActionListener() {
@@ -194,19 +180,15 @@ public class nuevoUsuario_frm extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 540, 150));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbEstadoActionPerformed
-
     private void IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarActionPerformed
         
-             if(codusu.getText().equals("") || pw_pf.getPassword().equals("") || pw_pf2.getPassword().equals("") || cbTipoAcceso.getSelectedIndex()==-1 || cbEstado.getSelectedIndex()==-1 ){
+             if(codusu.getText().equals("") || pw_pf.getPassword().equals("") || pw_pf2.getPassword().equals("") || cbTipoAcceso.getSelectedIndex()==-1 ){//|| cbEstado.getSelectedIndex()==-1 ){
                 JOptionPane.showMessageDialog(null,"Ingrese los datos requeridos");
              }else{
                 if(pw_pf2.getText().equals(pw_pf.getText())){
                    if(con.validacionUsuario(codusu.getText())==0){
                        try {
-                         con.CreacionUsuario(empleado_tf.getText(),codusu.getText(),pw_pf.getText(),Integer.toString(cbTipoAcceso.getSelectedIndex()+1), Integer.toString(cbEstado.getSelectedIndex()+1));
+                         con.CreacionUsuario(empleado_tf.getText(),codusu.getText(),pw_pf.getText(),Integer.toString(cbTipoAcceso.getSelectedIndex()+1), "1");
                       }
                       catch (SQLException ex) {
                         Logger.getLogger(nuevoUsuario_frm.class.getName()).log(Level.SEVERE, null, ex);
@@ -296,7 +278,6 @@ public class nuevoUsuario_frm extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ingresar;
-    private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbTipoAcceso;
     private javax.swing.JTextField codusu;
     private javax.swing.JTable empleado_tbl;
@@ -304,7 +285,6 @@ public class nuevoUsuario_frm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

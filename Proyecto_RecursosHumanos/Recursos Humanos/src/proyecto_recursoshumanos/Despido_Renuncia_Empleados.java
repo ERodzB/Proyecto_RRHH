@@ -219,7 +219,7 @@ public class Despido_Renuncia_Empleados extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if("".equals(txtIdentidad.getText()) &&"".equals(txtNombre.getText())&&"".equals(txtSalario.getText())&&"".equals(txtPorcPrestaciones.getText()))
+        if("".equals(txtIdentidad.getText()) ||"".equals(txtNombre.getText())||"".equals(txtSalario.getText())||"".equals(txtPorcPrestaciones.getText()))
         {
             JOptionPane.showMessageDialog(null, "ERROR, ningun campo de texto puede quedar vacio", "ERROR",0);
         }
