@@ -561,6 +561,7 @@ public class ConexionBD {
             JOptionPane.showMessageDialog(null,"Error: "+ex);
        
          }
+          }
     public DefaultTableModel CargarPuestos()
     {
                 
@@ -624,7 +625,8 @@ public class ConexionBD {
         catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error: "+ex);
        
-         }   
+         }
+         return res;
     }
     
     public DefaultTableModel CargarEmpleadoBono()
@@ -634,7 +636,6 @@ public class ConexionBD {
         model.addColumn("Identidad");        
         model.addColumn("Empleado");
         model.addColumn("Sueldo");
-        model.addColumn("Estado");
         
        
             try {
@@ -643,7 +644,7 @@ public class ConexionBD {
                 while(result.next())
                 {
                     Object dato [] = new Object[4];
-                    for(int i = 0; i<4; i++)
+                    for(int i = 0; i<3; i++)
                     {
                         dato[i] = result.getString(i+1);
                     }
@@ -674,7 +675,7 @@ public class ConexionBD {
             JOptionPane.showMessageDialog(null,"Error: "+ex);
        
          }
-        return res;
+       
     }
         
     

@@ -109,23 +109,17 @@ public class Bonos_frm extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBono, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(txtEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(640, 640, 640))))
+                            .addComponent(txtBono, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(txtEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(674, 674, 674)
                         .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 844, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(371, 371, 371)
-                        .addComponent(jLabel1)
-                        .addGap(404, 404, 404)))
+                        .addComponent(jLabel1)))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -159,13 +153,28 @@ public class Bonos_frm extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       try {
-            con.AgregarBono(code, emple, Double.parseDouble(txtBono.getText()));
-            JOptionPane.showMessageDialog(null, "Se ah Agregado el Bono exitosamente");
-            MostrarEmpleados();
-        } catch (SQLException ex) {
-            Logger.getLogger(ModificarPuesto_frm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String [] errores = new String [2];
+        Integer cant =0;
+            if(txtEmpleado.getText().equals("")){
+                errores[cant]="Seleccione a un empleado para asignarle un bono";
+                cant++;             
+            }
+            if(!txtBono.getText().matches("(\\d)(?=(\\d{3})+)")){
+                errores[cant]="Asigne un bono mayor a 100";
+                cant++;              
+            }
+            
+            if(cant!=0){
+                JOptionPane.showMessageDialog(null,errores);
+            }
+            else{
+                con.AgregarBono(code, emple, Double.parseDouble(txtBono.getText()));
+               JOptionPane.showMessageDialog(null, "Se ah Agregado el Bono exitosamente");
+               MostrarEmpleados();
+               txtBono.setText(" ");
+               txtEmpleado.setText(" ");   
+            }
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

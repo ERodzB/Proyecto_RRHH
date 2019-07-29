@@ -307,7 +307,7 @@ as
 begin
 	select Codigo_Puesto, Nombre_Puesto, Descripcion_Puesto from Puesto
 end
-
+go
 /*-------------------------Modificar Puesto-------------------------*/
 create procedure ModificarPuesto
 @Cod_Puesto int,
@@ -320,17 +320,16 @@ begin
 	Descripcion_Puesto = @Descripcion_Puesto
 	where Codigo_Puesto = @Cod_Puesto
 end
-
-
+go
 /*---------------------------Carga Empleado Bono---------------------*/
 create procedure CargaEmpleadoBono
 as
 begin
-	select e.Codigo_Empleado,e.Nombre_Empleado, e.Sueldo_Empleado es.Nombre_Estado from Empleado e
+	select e.Codigo_Empleado,e.Nombre_Empleado, e.Sueldo_Empleado  from Empleado e
 	inner join Estado es on e.Codigo_PuestoF = es.Codigo_Estado
+	where e.Codigo_EstadoF=1
 end
-
-
+go
 /*---------------------------Agregar Bono---------------------------*/
 create Procedure AgregarBono
 @cod_Evento int,
@@ -345,3 +344,4 @@ begin
 	set Sueldo_Empleado = @Monto+Sueldo_Empleado
 	where Codigo_Empleado = @Cod_Empleado
 end
+go
