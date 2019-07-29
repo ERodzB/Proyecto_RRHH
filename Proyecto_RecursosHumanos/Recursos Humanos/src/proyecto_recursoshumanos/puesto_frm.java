@@ -79,6 +79,9 @@ public class puesto_frm extends javax.swing.JPanel {
 
     private void modificarPuesto_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPuesto_btnActionPerformed
         // TODO add your handling code here:
+        ModificarPuesto_frm pues = new ModificarPuesto_frm();
+        Design estetica = new Design();
+        estetica.AbrirFormulario(puestos_panel, pues);
     }//GEN-LAST:event_modificarPuesto_btnActionPerformed
 
     private void crearPuesto_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPuesto_btnActionPerformed

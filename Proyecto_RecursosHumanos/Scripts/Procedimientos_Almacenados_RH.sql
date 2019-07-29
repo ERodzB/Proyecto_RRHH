@@ -283,4 +283,47 @@ create procedure ObtenerPass
 	end
 	GO
 
+/*-------------------------CargarPuesto-----------------------------*/
+Create Procedure CargarPuesto
+as
+begin
+	select Codigo_Puesto, Nombre_Puesto, Descripcion_Puesto from Puesto
+end
 
+/*-------------------------Modificar Puesto-------------------------*/
+create procedure ModificarPuesto
+@Cod_Puesto int,
+@Nomb_Puesto varchar(100),
+@Descripcion_Puesto varchar(200)
+as
+begin
+	update Puesto
+	set Nombre_Puesto = @Nomb_Puesto,
+	Descripcion_Puesto = @Descripcion_Puesto
+	where Codigo_Puesto = @Cod_Puesto
+end
+
+
+/*---------------------------Carga Empleado Bono---------------------*/
+create procedure CargaEmpleadoBono
+as
+begin
+	select e.Codigo_Empleado,e.Nombre_Empleado, e.Sueldo_Empleado es.Nombre_Estado from Empleado e
+	inner join Estado es on e.Codigo_PuestoF = es.Codigo_Estado
+end
+
+
+/*---------------------------Agregar Bono---------------------------*/
+create Procedure AgregarBono
+@cod_Evento int,
+@Cod_Empleado varchar(50),
+@Monto money,
+@creador varchar (200)
+as
+begin
+	Insert into Evento_Empleado	(Codigo_EventoF, Codigo_EmpleadoF, Creador_Evento, Monto_Evento, Fecha_Evento)
+	Values(@cod_Evento, @Cod_Empleado, @creador, @Monto, GETDATE())	
+	update Empleado
+	set Sueldo_Empleado = @Monto+Sueldo_Empleado
+	where Codigo_Empleado = @Cod_Empleado
+end
