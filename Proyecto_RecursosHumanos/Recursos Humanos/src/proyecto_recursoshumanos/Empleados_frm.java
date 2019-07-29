@@ -65,6 +65,11 @@ public class Empleados_frm extends javax.swing.JPanel {
         modificarEmpleado_btn.setForeground(new java.awt.Color(255, 255, 255));
         modificarEmpleado_btn.setText("Modificar Empleado");
         modificarEmpleado_btn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        modificarEmpleado_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEmpleado_btnActionPerformed(evt);
+            }
+        });
         jPanel1.add(modificarEmpleado_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 210, 60));
 
         despidoRenuncias_btn.setBackground(new java.awt.Color(215, 0, 5));
@@ -85,7 +90,7 @@ public class Empleados_frm extends javax.swing.JPanel {
         empleados_panel.setLayout(empleados_panelLayout);
         empleados_panelLayout.setHorizontalGroup(
             empleados_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1030, Short.MAX_VALUE)
         );
         empleados_panelLayout.setVerticalGroup(
             empleados_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,6 +107,13 @@ public class Empleados_frm extends javax.swing.JPanel {
     private void despidoRenuncias_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despidoRenuncias_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_despidoRenuncias_btnActionPerformed
+
+    private void modificarEmpleado_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpleado_btnActionPerformed
+        // TODO add your handling code here:
+        modificarEmpleado_frm mod = new modificarEmpleado_frm();
+        Design estetica = new Design();
+        estetica.AbrirFormulario(empleados_panel, mod);
+    }//GEN-LAST:event_modificarEmpleado_btnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

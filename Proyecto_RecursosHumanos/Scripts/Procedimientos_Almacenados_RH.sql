@@ -283,4 +283,95 @@ create procedure ObtenerPass
 	end
 	GO
 
+-- Modificar Empleado
+create procedure UpdateEmpleado
+	@Cod_Empleado varchar(50),
+	@Nombre varchar(50),
+	@Correo varchar(50),
+	@Direccion varchar(50),
+	@Sueldo varchar(50),
+	@Genero int,
+	@Puesto int
+	as
+	Begin
+		update Empleado
+		set
+		Nombre_Empleado=@Nombre, 
+		Correo_Empleado=@Correo,
+		Sueldo_Empleado=@Sueldo,
+		Direccion_Empleado=@Direccion,
+		Codigo_GeneroF=@Genero,
+		Codigo_PuestoF=@Puesto
+		where Codigo_Empleado=@Cod_Empleado
+		End
+	GO
 
+--Verificar si existe Empleado
+create procedure VerificaEmpleado
+	@Cod_Empleado varchar(50)
+	as
+	Begin
+		select COUNT(*) from Empleado E
+		where E.Codigo_Empleado=@Cod_Empleado
+	End
+	GO
+
+--Nombre del Empleado
+create procedure NombreEmpleado
+	@Cod varchar(50)
+	as
+	BEGIN
+		select Empleado.Nombre_Empleado from Empleado
+		where Empleado.Codigo_Empleado=@Cod;
+	END
+	GO
+
+--Correo del Empleado
+create procedure CorreoEmpleado
+	@Cod varchar(50)
+	as
+	BEGIN
+		select Empleado.Correo_Empleado from Empleado
+		where Empleado.Codigo_Empleado=@Cod;
+	END
+	GO
+
+--Direccion del Empleado
+create procedure DireccionEmpleado
+	@Cod varchar(50)
+	as
+	BEGIN
+		select Empleado.Direccion_Empleado from Empleado
+		where Empleado.Codigo_Empleado=@Cod;
+	END
+	GO
+
+--Sueldo del Empleado
+create procedure SueldoEmpleado
+	@Cod varchar(50)
+	as
+	BEGIN
+		select Empleado.Sueldo_Empleado from Empleado
+		where Empleado.Codigo_Empleado=@Cod;
+	END
+	GO
+
+--Genero del Empleado
+create procedure GeneroEmpleado
+	@Cod varchar(50)
+	as
+	BEGIN
+		select Empleado.Codigo_GeneroF from Empleado
+		where Empleado.Codigo_Empleado=@Cod;
+	END
+	GO
+
+--Puesto del Empleado
+create procedure PuestoEmpleado
+	@Cod varchar(50)
+	as
+	BEGIN
+		select Empleado.Codigo_PuestoF from Empleado
+		where Empleado.Codigo_Empleado=@Cod;
+	END
+	GO
