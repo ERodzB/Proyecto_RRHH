@@ -556,6 +556,50 @@ public class ConexionBD {
             
             state.execute();//Ejecuta el procedimiento
             JOptionPane.showMessageDialog(null,"Puesto creado correctamente");
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+       
+         }
+    public DefaultTableModel CargarPuestos()
+    {
+                
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Numero");        
+        model.addColumn("Nombre");
+        model.addColumn("Descripcion");
+       
+            try {
+                state = con.prepareCall("{call CargarPuesto}");
+                result = state.executeQuery();
+                while(result.next())
+                {
+                    Object dato [] = new Object[3];
+                    for(int i = 0; i<3; i++)
+                    {
+                        dato[i] = result.getString(i+1);
+                    }
+                    model.addRow(dato);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return model;
+       
+    }
+    
+    public void ModificacionPuestos(int codpuesto, String puesto, String descripcion)
+            throws SQLException{
+        
+        try{
+            state = con.prepareCall("{call ModificarPuesto (?,?,?)}");
+            state.setInt(1, codpuesto);
+            state.setString(2, puesto);
+            state.setString(3, descripcion);
+            
+            state.execute();//Ejecuta el procedimiento
+            
             
         }
         catch(SQLException ex){
@@ -576,6 +620,55 @@ public class ConexionBD {
                 res=result.getInt(1);
             }
 
+        } 
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+       
+         }   
+    }
+    
+    public DefaultTableModel CargarEmpleadoBono()
+    {
+                
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Identidad");        
+        model.addColumn("Empleado");
+        model.addColumn("Sueldo");
+        model.addColumn("Estado");
+        
+       
+            try {
+                state = con.prepareCall("{call CargaEmpleadoBono}");
+                result = state.executeQuery();
+                while(result.next())
+                {
+                    Object dato [] = new Object[4];
+                    for(int i = 0; i<4; i++)
+                    {
+                        dato[i] = result.getString(i+1);
+                    }
+                    model.addRow(dato);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return model;
+       
+    }
+    
+    public void AgregarBono(int evento, String codempleado, double monto)
+           {
+        
+        try{
+            state = con.prepareCall("{call AgregarBono (?,?,?,?)}");
+            state.setInt(1, evento);
+            state.setString(2, codempleado);
+            state.setDouble(3, monto);
+            state.setString(4, this.Codigo_Empleado);
+            
+            state.execute();//Ejecuta el procedimiento            
+            
         }
         catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error: "+ex);
@@ -583,4 +676,6 @@ public class ConexionBD {
          }
         return res;
     }
+        
+    
 }

@@ -97,6 +97,9 @@ public class Empleados_frm extends javax.swing.JPanel {
 
     private void bonos_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bonos_btnActionPerformed
         // TODO add your handling code here:
+        Bonos_frm bon = new Bonos_frm();
+        Design estetica = new Design();
+        estetica.AbrirFormulario(empleados_panel, bon);        
     }//GEN-LAST:event_bonos_btnActionPerformed
 
     private void despidoRenuncias_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despidoRenuncias_btnActionPerformed
