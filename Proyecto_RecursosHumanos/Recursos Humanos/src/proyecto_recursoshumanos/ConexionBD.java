@@ -545,4 +545,40 @@ public class ConexionBD {
             JOptionPane.showMessageDialog(null,"Error: "+ex);
         }
     }
+    public void NuevoEmpleado(String Codigo_Empleado,String Nombre_Empleado,String Correo_Empleado, Double Sueldo_Empleado, String Direccion_Empleado, int genero, int puesto){
+        
+          try{
+                state=con.prepareCall("{call NuevoEmpleado (?,?,?,?,?,?,?,?)}");
+            state.setString(1, Codigo_Empleado);
+            state.setString(2, Nombre_Empleado);
+            state.setString(3, Correo_Empleado);
+            state.setDouble(4, Sueldo_Empleado);
+            state.setString(5, Direccion_Empleado);
+            state.setInt(6, genero);
+            state.setInt(7, puesto);
+            state.setString(8, this.Codigo_Empleado);
+            state.execute();
+            JOptionPane.showMessageDialog(null,"Nuevo empleado contratado existosamente");
+      
+          }
+          catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+        }
+    }
+    
+    public int ValidacionEmpleados(String Codigo_Empleado){
+        int res=0;
+        try{
+            state = con.prepareCall("{call ValidacionEmpleado (?)}");
+            state.setString(1, Codigo_Empleado);
+            result = state.executeQuery();
+            while(result.next()){
+                res=result.getInt(1);
+            }
+        }
+         catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+        }
+        return res;
+    }
 }

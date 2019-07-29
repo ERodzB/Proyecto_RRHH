@@ -282,5 +282,31 @@ create procedure ObtenerPass
 		select CAST(DATEPART(SECOND,getdate()) as nvarchar)+SUBSTRING(REVERSE(Codigo_Usuario),0,4)+CAST(DATEPART(DAYOFYEAR,GETDATE()) as nvarchar) from Usuario where Codigo_Usuario=@Codigo_Usuario
 	end
 	GO
-
-
+--Validacion Empleado
+create procedure ValidacionEmpleado
+	@Codigo_Empleado varchar(50)
+	as
+	begin
+		select count(*) from Empleado
+		where Codigo_Empleado=@Codigo_Empleado
+	end
+	GO
+--Nuevo Empleado
+create procedure NuevoEmpleado
+	@Codigo_Empleado varchar(50),
+	@Nombre_Empleado varchar(200),
+	@Correo_Empleado varchar(100),
+	@Sueldo_Empleado money,
+	@Direccion_Empleado varchar(100),
+	@Genero int,
+	@Puesto int,
+	@Creador_Evento varchar(200)
+	as
+	begin
+		insert [dbo].[Empleado]
+		values(@Codigo_Empleado,@Nombre_Empleado,@Correo_Empleado,@Sueldo_Empleado,@Direccion_Empleado,@Genero,
+		@Puesto,1)
+		insert[dbo].[Evento_Empleado]
+		values(1,@Codigo_Empleado,@Creador_Evento,@Sueldo_Empleado,GETDATE())
+	end
+	GO
