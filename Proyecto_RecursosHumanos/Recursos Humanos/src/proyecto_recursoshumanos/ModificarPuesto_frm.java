@@ -23,6 +23,8 @@ public class ModificarPuesto_frm extends javax.swing.JPanel {
     public ModificarPuesto_frm() {
         initComponents();
         MostrarPuesto();
+        txtPuesto.setTransferHandler(null);
+        txtDescripcion.setTransferHandler(null);
     }
 
     public void MostrarPuesto()
@@ -50,6 +52,11 @@ public class ModificarPuesto_frm extends javax.swing.JPanel {
 
         txtPuesto.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtPuesto.setEnabled(false);
+        txtPuesto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPuestoKeyTyped(evt);
+            }
+        });
 
         tblPuesto = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -85,6 +92,11 @@ public class ModificarPuesto_frm extends javax.swing.JPanel {
 
         txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtDescripcion.setEnabled(false);
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel3.setText("Descripcion");
@@ -158,15 +170,47 @@ public class ModificarPuesto_frm extends javax.swing.JPanel {
     }//GEN-LAST:event_tblPuestoMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        try {
-            con.ModificacionPuestos(cod, txtPuesto.getText(), txtDescripcion.getText());
-            JOptionPane.showMessageDialog(null, "Se ah Modificado el Puesto exitosamente");
-            MostrarPuesto();
-        } catch (SQLException ex) {
-            Logger.getLogger(ModificarPuesto_frm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            String [] errores = new String[3];
+            Integer cant =0;
+            if(!txtPuesto.getText().matches("^([a-zA-z]{3,})+([a-zA-Z ]{2,})")){
+                errores[cant]="Nombre de Puesto Incorrecto";
+                cant++;
+                txtPuesto.setText("");
+            }
+            if(txtDescripcion.getText().matches("^([a-zA-z]{3,})+([a-zA-Z ]{2,})")){
+                errores[cant]="Descripcion de Puesto incorrecto";
+                txtDescripcion.setText("");
+                cant++;
+            }
+            if(cant!=0){
+                JOptionPane.showMessageDialog(null,errores);
+            }
+            else{
+                con.ModificacionPuestos(cod, txtPuesto.getText(), txtDescripcion.getText());
+                JOptionPane.showMessageDialog(null, "Se ah Modificado el Puesto exitosamente");
+                MostrarPuesto();
+            }
+            
+       
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtPuestoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuestoKeyTyped
+        // TODO add your handling code here:
+        String valPuesto="[a-zA-Z ]";
+        String a = Character.toString(evt.getKeyChar());
+        if(!a.matches(valPuesto) || txtPuesto.getText().length()>=50){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPuestoKeyTyped
+
+    private void txtDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyTyped
+        // TODO add your handling code here:
+        String valPuesto="[a-zA-Z ]";
+        String a = Character.toString(evt.getKeyChar());
+        if(!a.matches(valPuesto) || txtDescripcion.getText().length()>=50){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDescripcionKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -98,6 +98,11 @@ public class Bonos_frm extends javax.swing.JPanel {
 
         txtBono.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtBono.setEnabled(false);
+        txtBono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBonoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -176,6 +181,17 @@ public class Bonos_frm extends javax.swing.JPanel {
             }
       
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtBonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBonoKeyTyped
+        // TODO add your handling code here:
+        String valNom ="[0-9.]";
+        String a=Character.toString(evt.getKeyChar()) ;
+            
+          if(!a.matches(valNom)|| txtBono.getText().length()>=100000 ){
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtBonoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

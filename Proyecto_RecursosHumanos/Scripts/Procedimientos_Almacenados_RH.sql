@@ -288,7 +288,7 @@ create procedure ValidacionPuesto
 as
 begin
 	select count(*) from Puesto
-	where Nombre_Puesto='consultor'
+	where Nombre_Puesto=@Nombre_Puesto
 end
 GO
 --Nuevo Puesto
@@ -505,3 +505,6 @@ create procedure PuestoEmpleado
 		where Empleado.Codigo_Empleado=@Cod;
 	END
 	GO
+--validacion puesto
+
+

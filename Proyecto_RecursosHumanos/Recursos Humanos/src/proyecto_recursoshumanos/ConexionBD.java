@@ -637,7 +637,7 @@ public class ConexionBD {
     }
     
     public void ModificacionPuestos(int codpuesto, String puesto, String descripcion)
-            throws SQLException{
+            {
         
         try{
             state = con.prepareCall("{call ModificarPuesto (?,?,?)}");

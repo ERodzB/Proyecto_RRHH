@@ -176,7 +176,7 @@ public class NuevoEmpleado_frm extends javax.swing.JPanel {
         String valNom ="[a-zA-Z ]";
         String a=Character.toString(evt.getKeyChar()) ;
             
-          if(!a.matches(valNom)|| ide_tf.getText().length()>=80 ){
+          if(!a.matches(valNom)|| nom_tf.getText().length()>=80 ){
             evt.consume();
         }
     }//GEN-LAST:event_nom_tfKeyTyped
@@ -186,7 +186,7 @@ public class NuevoEmpleado_frm extends javax.swing.JPanel {
         String valNom ="[a-zA-Z0-9@._-]";
         String a=Character.toString(evt.getKeyChar()) ;
             
-          if(!a.matches(valNom)|| ide_tf.getText().length()>=600 ){
+          if(!a.matches(valNom)|| correo_tf.getText().length()>=60 ){
             evt.consume();
         }
     }//GEN-LAST:event_correo_tfKeyTyped
@@ -196,7 +196,7 @@ public class NuevoEmpleado_frm extends javax.swing.JPanel {
         String valNom ="[a-zA-Z .-]";
         String a=Character.toString(evt.getKeyChar()) ;
             
-          if(!a.matches(valNom)|| ide_tf.getText().length()>=80 ){
+          if(!a.matches(valNom)|| dire_tf.getText().length()>=80 ){
             evt.consume();
         }
     }//GEN-LAST:event_dire_tfKeyTyped
@@ -206,7 +206,7 @@ public class NuevoEmpleado_frm extends javax.swing.JPanel {
         String valNom ="[0-9.]";
         String a=Character.toString(evt.getKeyChar()) ;
             
-          if(!a.matches(valNom)|| ide_tf.getText().length()>=80 ){
+          if(!a.matches(valNom)|| sueldo_tf.getText().length()>=10000 ){
             evt.consume();
             
         }

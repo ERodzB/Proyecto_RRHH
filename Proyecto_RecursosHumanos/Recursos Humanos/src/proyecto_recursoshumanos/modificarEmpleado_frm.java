@@ -65,6 +65,9 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtIDKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDKeyTyped(evt);
+            }
         });
         add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 369, -1));
 
@@ -108,15 +111,35 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
         add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, -1, -1));
 
         txtNombre.setEnabled(false);
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
         add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 369, -1));
 
         txtCorreo.setEnabled(false);
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoKeyTyped(evt);
+            }
+        });
         add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 369, -1));
 
         txtDireccion.setEnabled(false);
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyTyped(evt);
+            }
+        });
         add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 369, -1));
 
         txtSueldo.setEnabled(false);
+        txtSueldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSueldoKeyTyped(evt);
+            }
+        });
         add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 369, -1));
 
         jLabel4.setText("Sueldo del Empleado");
@@ -180,25 +203,119 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
-        con.UpdateEmpleado(txtID.getText(), txtNombre.getText(), txtCorreo.getText(), txtDireccion.getText(), txtSueldo.getText(), (cmbGenero.getSelectedIndex()+1),(cmbPuestos.getSelectedIndex()+1));
+         String [] errores= new String [5];
+        Integer cant=0;
+        if(!txtID.getText().matches("^[0-9]{13}$")){
+                txtID.setText("");
+                errores[cant]="Identidad Incorrecta Digite bien los datos";
+                cant++;
+        }
+        if(!txtNombre.getText().matches("^([a-zA-z]{4,})+([a-zA-Z ]{4,})$")){
+            txtNombre.setText("");
+            errores[cant]="Nombre Incorrecto";
+            cant++;
+        }
+        if(!txtCorreo.getText().matches("^([a-z])+.+[@]+[a-zA-Z.]+(.com)$")){
+                errores[cant]="Correo Electronico Incorrecto";
+                cant++;
+                txtCorreo.setText("");
+        }
         
-        JOptionPane.showMessageDialog(null, "La informacion ha sido guardada exitosamente");
-        txtNombre.setText("");
-        txtID.setText(" ");
-        txtCorreo.setText("");
-        txtDireccion.setText("");
-        txtSueldo.setText("");
-        cmbPuestos.setSelectedIndex(-1);
-        cmbGenero.setSelectedIndex(-1);
-        txtNombre.setEnabled(false);
-        txtCorreo.setEnabled(false);
-        txtDireccion.setEnabled(false);
-        txtSueldo.setEnabled(false);
-        cmbPuestos.setEnabled(false);
-        cmbGenero.setEnabled(false);
-        Guardar.setEnabled(false);
+        if(!txtDireccion.getText().matches("^([a-zA-z]{1,})+.+[a-zA-Z .-_]$")){
+                txtDireccion.setText("");
+                errores[cant]="Direccion Incorrecta";
+                cant++;
+        }
+        
+        if(!txtSueldo.getText().matches("^([1-9]{1})+([0-9]{2,})+.??([0-9]{1,})$")){
+                txtSueldo.setText("");
+                errores[cant]="Sueldo Incorrecto";
+                cant++;
+        }        
+        if(cmbGenero.getSelectedIndex()==-1){
+            errores[cant]="Escoja un genero";
+            cant++;
+        }
+        if(cmbPuestos.getSelectedIndex()==-1){
+            errores[cant]="Escoja un puesto";
+            cant++;
+        }
+        if(cant!=0){
+            JOptionPane.showMessageDialog(null,errores);
+        }
+        else{
+            con.UpdateEmpleado(txtID.getText(), txtNombre.getText(), txtCorreo.getText(), txtDireccion.getText(), txtSueldo.getText(), (cmbGenero.getSelectedIndex()+1),(cmbPuestos.getSelectedIndex()+1));
+
+            JOptionPane.showMessageDialog(null, "La informacion ha sido guardada exitosamente");
+            txtNombre.setText("");
+            txtID.setText(" ");
+            txtCorreo.setText("");
+            txtDireccion.setText("");
+            txtSueldo.setText("");
+            cmbPuestos.setSelectedIndex(-1);
+            cmbGenero.setSelectedIndex(-1);
+            txtNombre.setEnabled(false);
+            txtCorreo.setEnabled(false);
+            txtDireccion.setEnabled(false);
+            txtSueldo.setEnabled(false);
+            cmbPuestos.setEnabled(false);
+            cmbGenero.setEnabled(false);
+            Guardar.setEnabled(false);
+        }
+        
 
     }//GEN-LAST:event_GuardarActionPerformed
+
+    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
+        // TODO add your handling code here:
+        String valIde ="[0-9]";
+        String a=Character.toString(evt.getKeyChar()) ;
+            
+          if(!a.matches(valIde) || txtID.getText().length()>=13 ){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIDKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        String valNom ="[a-zA-Z ]";
+        String a=Character.toString(evt.getKeyChar()) ;
+            
+          if(!a.matches(valNom)|| txtNombre.getText().length()>=80 ){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
+        // TODO add your handling code here:
+        String valNom ="[a-zA-Z0-9@._-]";
+        String a=Character.toString(evt.getKeyChar()) ;
+            
+          if(!a.matches(valNom)|| txtCorreo.getText().length()>=60 ){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCorreoKeyTyped
+
+    private void txtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyTyped
+        // TODO add your handling code here:
+        String valNom ="[a-zA-Z .-]";
+        String a=Character.toString(evt.getKeyChar()) ;
+            
+          if(!a.matches(valNom)|| txtDireccion.getText().length()>=80 ){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDireccionKeyTyped
+
+    private void txtSueldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldoKeyTyped
+        // TODO add your handling code here:
+        String valNom ="[0-9.]";
+        String a=Character.toString(evt.getKeyChar()) ;
+            
+          if(!a.matches(valNom)|| txtSueldo.getText().length()>=100000 ){
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtSueldoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

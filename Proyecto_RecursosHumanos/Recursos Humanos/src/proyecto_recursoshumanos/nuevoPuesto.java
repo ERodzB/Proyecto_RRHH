@@ -21,6 +21,8 @@ public class nuevoPuesto extends javax.swing.JPanel {
      */
     public nuevoPuesto() {
         initComponents();
+        nompuesto.setTransferHandler(null);
+        descripcionpuesto.setTransferHandler(null);
     }
 
     /**
@@ -60,9 +62,19 @@ public class nuevoPuesto extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, -1, -1));
 
         nompuesto.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        nompuesto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nompuestoKeyTyped(evt);
+            }
+        });
         add(nompuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 221, -1));
 
         descripcionpuesto.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        descripcionpuesto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descripcionpuestoKeyTyped(evt);
+            }
+        });
         add(descripcionpuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 221, -1));
 
         crearpuesto.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
@@ -83,13 +95,14 @@ public class nuevoPuesto extends javax.swing.JPanel {
             if(!nompuesto.getText().matches("^([a-zA-z]{3,})+([a-zA-Z ]{2,})")){
                 errores[cant]="Nombre de Puesto Incorrecto";
                 cant++;
-                nompuesto.setText(" ");
+                nompuesto.setText("");
             }
             if(!descripcionpuesto.getText().matches("^([a-zA-z]{3,})+([a-zA-Z ]{2,})")){
                 errores[cant]="Descripcion de Puesto incorrecto";
-                cant++;
+                descripcionpuesto.setText("");
+            cant++;
             }
-            if(con.validacionPuesto(nompuesto.getText())>=1){
+            if(con.validacionPuesto(nompuesto.getText())==1){
                 errores[cant]="Ese puesto ya existe";
                 cant++;
             }
@@ -99,12 +112,32 @@ public class nuevoPuesto extends javax.swing.JPanel {
             }
             else{
                  con.CreacionPuesto(nompuesto.getText(),descripcionpuesto.getText());
+                 nompuesto.setText("");
+                 descripcionpuesto.setText("");
             }
            
       
         
         
     }//GEN-LAST:event_crearpuestoActionPerformed
+
+    private void nompuestoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nompuestoKeyTyped
+        // TODO add your handling code here:
+        String valPuesto="[a-zA-Z ]";
+        String a = Character.toString(evt.getKeyChar());
+        if(!a.matches(valPuesto) && nompuesto.getText().length()<=50){
+            evt.consume();
+        }
+    }//GEN-LAST:event_nompuestoKeyTyped
+
+    private void descripcionpuestoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcionpuestoKeyTyped
+        // TODO add your handling code here:
+        String valPuesto="[a-zA-Z ]";
+        String a = Character.toString(evt.getKeyChar());
+        if(!a.matches(valPuesto) && descripcionpuesto.getText().length()<=100){
+            evt.consume();
+        }
+    }//GEN-LAST:event_descripcionpuestoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
