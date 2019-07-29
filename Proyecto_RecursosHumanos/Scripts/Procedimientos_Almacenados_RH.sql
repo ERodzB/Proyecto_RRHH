@@ -133,7 +133,7 @@ begin
 select e.Nombre_Empleado,e.Correo_Empleado,cast(e.Sueldo_Empleado as decimal(10,2)),e.Direccion_Empleado,g.Nombre_Genero from Empleado e
 inner join Genero g on e.Codigo_GeneroF = g.Codigo_Genero
 inner join Puesto p on e.Codigo_PuestoF = p.Codigo_Puesto
-inner join Estado es on e.Codigo_PuestoF = es.Codigo_Estado
+inner join Estado es on e.Codigo_EstadoF = es.Codigo_Estado
 end
 go
 /*-------------------Datso Generales Empleados----------------------*/
@@ -143,9 +143,8 @@ begin
 select e.Codigo_Empleado,e.Nombre_Empleado,
 p.Nombre_Puesto,es.Nombre_Estado from Empleado e
 inner join Puesto p on e.Codigo_PuestoF = p.Codigo_Puesto
-inner join Estado es on e.Codigo_PuestoF = es.Codigo_Estado
+inner join Estado es on e.Codigo_EstadoF = es.Codigo_Estado
 end
-GO
 /*------------------Combobox Generos----------------------*/
 go
 Create Procedure [dbo].[CargaCmbGenero]
@@ -282,5 +281,45 @@ create procedure ObtenerPass
 		select CAST(DATEPART(SECOND,getdate()) as nvarchar)+SUBSTRING(REVERSE(Codigo_Usuario),0,4)+CAST(DATEPART(DAYOFYEAR,GETDATE()) as nvarchar) from Usuario where Codigo_Usuario=@Codigo_Usuario
 	end
 	GO
-
+/*-------------------Datos de Empleados para despidos/renuncias----------------------*/
+go
+Create procedure RenunciaDespido
+@codigoempleado as varchar(50),
+@codigoaccion as int,
+@creadorevento as varchar(50),
+@montoevento as money
+as
+begin
+declare @nusuari as varchar(50)
+set @nusuari = (select u.Codigo_Usuario from Usuario u inner join Empleado_Usuario eu on u.Codigo_Usuario = eu.Codigo_UsuarioF where eu.Codigo_EmpleadoF = @codigoempleado )
+begin
+insert into Evento_Empleado values (@codigoaccion,@codigoempleado,@creadorevento,@montoevento,GETDATE());
+end
+begin
+update Empleado 
+set Codigo_EstadoF =2
+where Codigo_Empleado = @codigoempleado
+end
+begin
+update Usuario
+set Codigo_EstadoF = 2
+where Codigo_Usuario = @nusuari
+end
+end
+go
+/*-------------------Datos de Empleados para despidos/renuncias----------------------*/
+go
+create procedure DVGEmpleadoRenuncia
+as
+begin
+select e.Codigo_Empleado,e.Nombre_Empleado,
+a.Nombre_Acceso,e.Sueldo_Empleado from Empleado e
+inner join Estado es on e.Codigo_EstadoF = es.Codigo_Estado
+inner join Empleado_Usuario ep on e.Codigo_Empleado = ep.Codigo_EmpleadoF
+inner join Usuario u on ep.Codigo_UsuarioF = u.Codigo_Usuario
+inner join Acceso a on u.Codigo_AccesoF = a.Codigo_Acceso
+where e.Codigo_EstadoF =1
+group by e.Nombre_Empleado, e.Codigo_Empleado,e.Sueldo_Empleado,a.Nombre_Acceso
+end
+go
 

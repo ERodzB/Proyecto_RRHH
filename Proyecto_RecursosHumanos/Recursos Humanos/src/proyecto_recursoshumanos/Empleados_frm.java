@@ -85,7 +85,7 @@ public class Empleados_frm extends javax.swing.JPanel {
         empleados_panel.setLayout(empleados_panelLayout);
         empleados_panelLayout.setHorizontalGroup(
             empleados_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1030, Short.MAX_VALUE)
         );
         empleados_panelLayout.setVerticalGroup(
             empleados_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,6 +101,9 @@ public class Empleados_frm extends javax.swing.JPanel {
 
     private void despidoRenuncias_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despidoRenuncias_btnActionPerformed
         // TODO add your handling code here:
+        Despido_Renuncia_Empleados desEmp = new Despido_Renuncia_Empleados();
+        Design estetica = new Design();
+        estetica.AbrirFormulario(empleados_panel, desEmp);
     }//GEN-LAST:event_despidoRenuncias_btnActionPerformed
 
 
