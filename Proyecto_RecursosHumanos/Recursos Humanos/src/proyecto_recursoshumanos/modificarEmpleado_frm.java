@@ -54,6 +54,8 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
@@ -64,8 +66,10 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
                 txtIDKeyPressed(evt);
             }
         });
+        add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 369, -1));
 
         jLabel1.setText("Identidad del empleado");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
 
         Buscar.setText("Buscar");
         Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,16 +82,21 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
                 BuscarActionPerformed(evt);
             }
         });
+        add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, -1, -1));
 
         cmbGenero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGenero.setEnabled(false);
+        add(cmbGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 369, -1));
 
         cmbPuestos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbPuestos.setEnabled(false);
+        add(cmbPuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, 369, -1));
 
         jLabel2.setText("Genero");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 134, -1));
 
         jLabel3.setText("Puesto");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
 
         Guardar.setText("Guardar");
         Guardar.setEnabled(false);
@@ -96,101 +105,31 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
                 GuardarActionPerformed(evt);
             }
         });
+        add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, -1, -1));
 
         txtNombre.setEnabled(false);
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 369, -1));
 
         txtCorreo.setEnabled(false);
+        add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 369, -1));
 
         txtDireccion.setEnabled(false);
+        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 369, -1));
 
         txtSueldo.setEnabled(false);
+        add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 369, -1));
 
         jLabel4.setText("Sueldo del Empleado");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, -1, -1));
 
         jLabel5.setText("Direccion Empleado");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
 
         jLabel6.setText("Correo del Empleado");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
 
         jLabel7.setText("Nombre del Empleado");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(92, 92, 92)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(84, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmbPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                                    .addComponent(txtSueldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Guardar)
-                                    .addComponent(Buscar))))
-                        .addGap(84, 84, 84))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(Buscar)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addComponent(Guardar)
-                .addGap(47, 47, 47))
-        );
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
@@ -245,6 +184,7 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
         
         JOptionPane.showMessageDialog(null, "La informacion ha sido guardada exitosamente");
         txtNombre.setText("");
+        txtID.setText(" ");
         txtCorreo.setText("");
         txtDireccion.setText("");
         txtSueldo.setText("");

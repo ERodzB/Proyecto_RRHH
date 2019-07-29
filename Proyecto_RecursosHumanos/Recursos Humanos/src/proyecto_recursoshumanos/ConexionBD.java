@@ -889,4 +889,21 @@ public class ConexionBD {
             return "";
         }
     }
+    public void UpdateEmpleado(String Cod_Usuario, String Nombre, String Correo, String Direccion, String Sueldo, Integer Genero, Integer Puesto){
+       
+        try{
+            state= con.prepareCall("{call UpdateEmpleado (?,?,?,?,?,?,?)}");
+            state.setString(1, Cod_Usuario);
+            state.setString(2, Nombre);
+            state.setString(3, Correo);
+            state.setString(4, Direccion);
+            state.setString(5, Sueldo);
+            state.setInt(6, Genero);
+            state.setInt(7, Puesto);
+            state.execute();
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error: "+ex);
+        }
+    }
 }
