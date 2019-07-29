@@ -32,7 +32,10 @@ public class puesto_frm extends javax.swing.JPanel {
         crearPuesto_btn = new javax.swing.JButton();
         puestos_panel = new javax.swing.JLayeredPane();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel1.setBackground(new java.awt.Color(255, 0, 7));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         modificarPuesto_btn.setBackground(new java.awt.Color(215, 0, 5));
         modificarPuesto_btn.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
@@ -44,6 +47,7 @@ public class puesto_frm extends javax.swing.JPanel {
                 modificarPuesto_btnActionPerformed(evt);
             }
         });
+        jPanel1.add(modificarPuesto_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 210, 60));
 
         crearPuesto_btn.setBackground(new java.awt.Color(215, 0, 5));
         crearPuesto_btn.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
@@ -55,21 +59,9 @@ public class puesto_frm extends javax.swing.JPanel {
                 crearPuesto_btnActionPerformed(evt);
             }
         });
+        jPanel1.add(crearPuesto_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 60));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(crearPuesto_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(modificarPuesto_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(crearPuesto_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(modificarPuesto_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, -1));
 
         javax.swing.GroupLayout puestos_panelLayout = new javax.swing.GroupLayout(puestos_panel);
         puestos_panel.setLayout(puestos_panelLayout);
@@ -82,20 +74,7 @@ public class puesto_frm extends javax.swing.JPanel {
             .addGap(0, 580, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(puestos_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(puestos_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(puestos_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 67, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarPuesto_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPuesto_btnActionPerformed

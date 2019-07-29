@@ -8,6 +8,7 @@ package proyecto_recursoshumanos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,107 +34,84 @@ public class nuevoPuesto extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        codpuesto = new javax.swing.JTextField();
         nompuesto = new javax.swing.JTextField();
         descripcionpuesto = new javax.swing.JTextField();
         crearpuesto = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1030, 700));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Creacion de Puesto");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel2.setText("Ingrese la Siguiente Informacion");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
 
-        jLabel3.setText("Codigo de Puesto:");
-
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel4.setText("Nombre del Puesto:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel5.setText("Descripcion:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, -1, -1));
 
+        nompuesto.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        add(nompuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 221, -1));
+
+        descripcionpuesto.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        add(descripcionpuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 221, -1));
+
+        crearpuesto.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         crearpuesto.setText("Crear");
         crearpuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearpuestoActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(392, 392, 392)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(249, 249, 249)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(codpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(nompuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(descripcionpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(crearpuesto))))
-                .addContainerGap(386, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addGap(36, 36, 36)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(codpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(56, 56, 56))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(nompuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4)))
-                        .addGap(58, 58, 58))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(descripcionpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)))
-                .addGap(89, 89, 89)
-                .addComponent(crearpuesto)
-                .addContainerGap(282, Short.MAX_VALUE))
-        );
+        add(crearpuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 150, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearpuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearpuestoActionPerformed
-        try {
+        
             // TODO add your handling code here:
-            con.CreacionPuesto(codpuesto.getText(),nompuesto.getText(),descripcionpuesto.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(nuevoPuesto.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            String [] errores = new String[3];
+            Integer cant=0;
+            if(!nompuesto.getText().matches("^([a-zA-z]{3,})+([a-zA-Z ]{2,})")){
+                errores[cant]="Nombre de Puesto Incorrecto";
+                cant++;
+                nompuesto.setText(" ");
+            }
+            if(!descripcionpuesto.getText().matches("^([a-zA-z]{3,})+([a-zA-Z ]{2,})")){
+                errores[cant]="Descripcion de Puesto incorrecto";
+                cant++;
+            }
+            if(con.validacionPuesto(nompuesto.getText())>=1){
+                errores[cant]="Ese puesto ya existe";
+                cant++;
+            }
+            if(cant!=0){
+             
+                JOptionPane.showMessageDialog(null,errores);
+            }
+            else{
+                 con.CreacionPuesto(nompuesto.getText(),descripcionpuesto.getText());
+            }
+           
+      
         
         
     }//GEN-LAST:event_crearpuestoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField codpuesto;
     private javax.swing.JButton crearpuesto;
     private javax.swing.JTextField descripcionpuesto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField nompuesto;

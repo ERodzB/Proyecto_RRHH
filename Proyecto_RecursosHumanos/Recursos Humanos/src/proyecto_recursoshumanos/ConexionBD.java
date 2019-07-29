@@ -546,15 +546,13 @@ public class ConexionBD {
         }
     }
     
-    public void CreacionPuesto(String Codigo_Puesto, String Nombre_Puesto, String Descripcion_Puesto)
-            throws SQLException{
+    public void CreacionPuesto(String Nombre_Puesto, String Descripcion_Puesto)
+          {
         
         try{
-            state = con.prepareCall("{call CreacionPuesto (?,?,?)}");
-            state.setString(1, Codigo_Puesto);
-            state.setString(2, Nombre_Puesto);
-            state.setString(3, Descripcion_Puesto);
-            //state.setString(4, this.Codigo_Empleado);
+            state = con.prepareCall("{call CreacionPuesto (?,?)}");
+            state.setString(1, Nombre_Puesto);
+            state.setString(2, Descripcion_Puesto);
             
             state.execute();//Ejecuta el procedimiento
             JOptionPane.showMessageDialog(null,"Puesto creado correctamente");
@@ -566,5 +564,23 @@ public class ConexionBD {
          }
         
     
+    }
+    
+    public int validacionPuesto(String Nombre_Puesto){
+        Integer res=0;
+        try{
+            state = con.prepareCall("{call ValidacionPuesto (?)}");
+            state.setString(1,Nombre_Puesto);
+            result= state.executeQuery();
+            while(result.next()){
+                res=result.getInt(1);
+            }
+
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ex);
+       
+         }
+        return res;
     }
 }
