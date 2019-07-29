@@ -58,6 +58,11 @@ public class Empleados_frm extends javax.swing.JPanel {
         nuevoEmpleado_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         nuevoEmpleado_btn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         nuevoEmpleado_btn.setName(""); // NOI18N
+        nuevoEmpleado_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoEmpleado_btnActionPerformed(evt);
+            }
+        });
         jPanel1.add(nuevoEmpleado_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 60));
 
         modificarEmpleado_btn.setBackground(new java.awt.Color(215, 0, 5));
@@ -85,7 +90,7 @@ public class Empleados_frm extends javax.swing.JPanel {
         empleados_panel.setLayout(empleados_panelLayout);
         empleados_panelLayout.setHorizontalGroup(
             empleados_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1030, Short.MAX_VALUE)
         );
         empleados_panelLayout.setVerticalGroup(
             empleados_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,6 +110,13 @@ public class Empleados_frm extends javax.swing.JPanel {
     private void despidoRenuncias_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despidoRenuncias_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_despidoRenuncias_btnActionPerformed
+
+    private void nuevoEmpleado_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoEmpleado_btnActionPerformed
+        // TODO add your handling code here:
+        NuevoEmpleado_frm nempleado = new NuevoEmpleado_frm();
+        Design estetics = new Design();
+        estetics.AbrirFormulario(empleados_panel,nempleado);
+    }//GEN-LAST:event_nuevoEmpleado_btnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
