@@ -283,12 +283,21 @@ create procedure ObtenerPass
 	end
 	GO
 
-
+-- Validacion Puesto
+create procedure ValidacionPuesto
+@Nombre_Puesto varchar(100)
+as
+begin
+	select count(*) from Puesto
+	where Nombre_Puesto='consultor'
+end
+GO
 --Nuevo Puesto
 create procedure CreacionPuesto
-@codigo int, @nombre varchar(100), @descripcion varchar(200)
+ @nombre varchar(100), @descripcion varchar(200)
 as
 begin 
-	insert into Puesto (Codigo_Puesto, Nombre_Puesto, Descripcion_Puesto)
-	values ( @codigo, @nombre, @descripcion)
+	insert into Puesto (Codigo_Puesto, Nombre_Puesto, Descripcion_Puesto)(
+	 select count(*)+1, @nombre, @descripcion from Puesto)
 end
+GO
