@@ -214,7 +214,7 @@ public class NuevoEmpleado_frm extends javax.swing.JPanel {
 
     private void contratar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratar_btnActionPerformed
         // TODO add your handling code here:
-        String [] errores= new String [5];
+        String [] errores= new String [10];
         Integer cant=0;
         if(!ide_tf.getText().matches("^[0-9]{13}$")){
         
@@ -253,6 +253,7 @@ public class NuevoEmpleado_frm extends javax.swing.JPanel {
             errores[cant]="Ya existe ese Empleado";
             cant++;
         }
+        
         if(cant!=0){
             JOptionPane.showMessageDialog(null,errores);
         }

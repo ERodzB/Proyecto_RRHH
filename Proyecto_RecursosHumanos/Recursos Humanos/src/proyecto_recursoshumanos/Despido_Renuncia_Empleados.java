@@ -23,6 +23,7 @@ public class Despido_Renuncia_Empleados extends javax.swing.JPanel {
      */
     public Despido_Renuncia_Empleados() {
         initComponents();
+        txtPorcPrestaciones.setTransferHandler(null);
         txtprest.setVisible(false);
         labelprest.setVisible(false);
         btnRegistrar.setVisible(false);
@@ -219,7 +220,7 @@ public class Despido_Renuncia_Empleados extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if("".equals(txtIdentidad.getText()) ||"".equals(txtNombre.getText())||"".equals(txtSalario.getText())||"".equals(txtPorcPrestaciones.getText()))
+        if("".equals(txtIdentidad.getText()) ||"".equals(txtNombre.getText())||"".equals(txtSalario.getText()))
         {
             JOptionPane.showMessageDialog(null, "ERROR, ningun campo de texto puede quedar vacio", "ERROR",0);
         }
@@ -229,7 +230,11 @@ public class Despido_Renuncia_Empleados extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "ERROR, Debe seleccionar una accion a realizar", "ERROR",0);
         }
         else
-        if(Double.parseDouble(txtPorcPrestaciones.getText())<25.0 ||Double.parseDouble(txtPorcPrestaciones.getText())>1000.0  ||!txtPorcPrestaciones.getText().matches("^([1-9]{1})([0-9]{1,2})?$"))
+        if(!txtPorcPrestaciones.getText().matches("^([1-9]{1})([0-9]{1,2})?$")){
+            JOptionPane.showMessageDialog(null,"Ingrese un porcentaje correcto");
+        }
+        else
+        if(Double.parseDouble(txtPorcPrestaciones.getText())<25.0 ||Double.parseDouble(txtPorcPrestaciones.getText())>1000.0)
         {
             JOptionPane.showMessageDialog(null, "ERROR, El porcentaje de Prestaciones no puede ser menor que 25%, ni mayor que 1000%", "ERROR",0);
             txtPorcPrestaciones.setText("");
@@ -259,7 +264,7 @@ public class Despido_Renuncia_Empleados extends javax.swing.JPanel {
 
     private void txtPorcPrestacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPorcPrestacionesKeyTyped
         // TODO add your handling code here:
-        String valNom ="[0-9.]";
+        String valNom ="[0-9]";
         String a=Character.toString(evt.getKeyChar()) ;
             
           if(!a.matches(valNom)|| txtPorcPrestaciones.getText().length()>=3 ){

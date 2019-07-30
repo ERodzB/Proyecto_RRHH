@@ -324,8 +324,7 @@ go
 create procedure CargaEmpleadoBono
 as
 begin
-	select e.Codigo_Empleado,e.Nombre_Empleado, e.Sueldo_Empleado  from Empleado e
-	inner join Estado es on e.Codigo_PuestoF = es.Codigo_Estado
+	select e.Codigo_Empleado,e.Nombre_Empleado, e.Sueldo_Empleado, e.Codigo_EstadoF  from Empleado e
 	where e.Codigo_EstadoF=1
 end
 go
@@ -409,10 +408,11 @@ inner join Estado es on e.Codigo_EstadoF = es.Codigo_Estado
 inner join Empleado_Usuario ep on e.Codigo_Empleado = ep.Codigo_EmpleadoF
 inner join Usuario u on ep.Codigo_UsuarioF = u.Codigo_Usuario
 inner join Acceso a on u.Codigo_AccesoF = a.Codigo_Acceso
-where e.Codigo_EstadoF =1
+where e.Codigo_EstadoF =1 and a.Nombre_Acceso!='Administrador de Sistema de Software'
 group by e.Nombre_Empleado, e.Codigo_Empleado,e.Sueldo_Empleado,a.Nombre_Acceso
 end
 go
+
 -- Modificar Empleado
 create procedure UpdateEmpleado
 	@Cod_Empleado varchar(50),

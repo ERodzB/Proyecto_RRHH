@@ -18,19 +18,11 @@ public class CambiarPassword_frm extends javax.swing.JPanel {
      */
     public CambiarPassword_frm() {
         initComponents();
-        tblUsuario.setVisible(false);
-        if(Integer.parseInt(ConexionBD.Nivel_Autoridad)<=2){
-            tblUsuario.setVisible(true);
-            oldPass_pf.setVisible(false);
-            oldPass_lbl.setVisible(false);
-            CargarTablaUsuario();
-        }
-        else{
-            usuario_tf.setText(ConexionBD.usuario);
-        }
-    }
-    public void CargarTablaUsuario(){
-       tblUsuario.setModel(con.CargarUsuarios());
+       
+        usuario_tf.setText(ConexionBD.usuario);
+        oldPass_pf.setTransferHandler(null);
+        newPass_pf.setTransferHandler(null);
+        rePass_pf.setTransferHandler(null);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,8 +42,6 @@ public class CambiarPassword_frm extends javax.swing.JPanel {
         oldPass_pf = new javax.swing.JPasswordField();
         newPass_pf = new javax.swing.JPasswordField();
         Cambiar_btn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblUsuario = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -107,44 +97,44 @@ public class CambiarPassword_frm extends javax.swing.JPanel {
             }
         });
         add(Cambiar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, 140, 70));
-
-        tblUsuario = new javax.swing.JTable(){
-            public boolean isCellEditable(int rowIndex, int colIndex){
-                return false;
-            }
-        };
-        tblUsuario.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tblUsuario.setRowHeight(30);
-        tblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblUsuarioMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblUsuario);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 540, 150));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseClicked
-        // TODO add your handling code here:
-        usuario_tf.setText(tblUsuario.getValueAt(tblUsuario.getSelectedRow(),0).toString());
-        /*cmbAcceso.setSelectedItem(tblUsuario.getValueAt(tblUsuario.getSelectedRow(),1).toString());
-        cmbEstado.setSelectedItem(tblUsuario.getValueAt(tblUsuario.getSelectedRow(),2).toString());*/
-    }//GEN-LAST:event_tblUsuarioMouseClicked
 
     private void Cambiar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cambiar_btnActionPerformed
         // TODO add your handling code here:
+        String [] errores = new String[5];
+        Integer cant=0;
+        if(!oldPass_pf.getText().matches("^\\w*$")){
+            errores[cant]="Ingrese un dato en el campo antigua contraseña";
+            cant++;
+            oldPass_pf.setText("");
+        }
+        if(!newPass_pf.getText().matches("^(\\w{8,})*$")){
+            errores[cant]="Ingrese una contraseña minimo a 8 caracteres";
+            cant++;
+            newPass_pf.setText("");
+             
+        }
+        if(!newPass_pf.getText().equals(rePass_pf.getText())){
+            errores[cant]="Las contraseñas ingresadas no coinciden";
+            cant++;
+            rePass_pf.setText("");
+        }
+        if((con.AntiguaPassword(usuario_tf.getText(), oldPass_pf.getText()))!=1){
+            errores[cant]="Su contraseña antigua no coincide";
+            cant++;
+            oldPass_pf.setText("");
+        }
+        if(cant!=0){
+            JOptionPane.showMessageDialog(null, errores);
+        }
+        else{
+             con.CambiarPassword(usuario_tf.getText(), newPass_pf.getText());
+             newPass_pf.setText("");
+             oldPass_pf.setText("");
+             rePass_pf.setText("");
+             
+        }
+        /*
         if(usuario_tf.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Escoja un usuario a modificar");
         }
@@ -154,7 +144,9 @@ public class CambiarPassword_frm extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null,"Rellene los campos necesarios");
                 }
                 else{
-                    if(newPass_pf.getText().equals(rePass_pf.getText()))
+                    if(!newPass_pf.getText().matches("^(\\w{8,})*$") && !rePass_pf.getText().matches("^(\\w{8,})*$"))
+                    {
+                        if(newPass_pf.getText().equals(rePass_pf.getText()))
                     {
                          con.CambiarPassword(usuario_tf.getText(), newPass_pf.getText());
                             usuario_tf.setText("");
@@ -165,6 +157,10 @@ public class CambiarPassword_frm extends javax.swing.JPanel {
                      
                     else{
                         JOptionPane.showMessageDialog(null,"Ingrese Contraseñas iguales");
+                    }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Ingrese una contraseña con 8 caracteres minimo");
                     }
                 }
             }
@@ -188,7 +184,7 @@ public class CambiarPassword_frm extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null,"Su antigua contraseña no coincide");
                 }
             }
-        }
+        }*/
     }//GEN-LAST:event_Cambiar_btnActionPerformed
 
     private void newPass_pfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newPass_pfKeyTyped
@@ -234,12 +230,10 @@ public class CambiarPassword_frm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPasswordField newPass_pf;
     private javax.swing.JLabel oldPass_lbl;
     private javax.swing.JPasswordField oldPass_pf;
     private javax.swing.JPasswordField rePass_pf;
-    private javax.swing.JTable tblUsuario;
     private javax.swing.JTextField usuario_tf;
     // End of variables declaration//GEN-END:variables
 }

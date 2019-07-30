@@ -19,6 +19,11 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
     public modificarEmpleado_frm() {
         initComponents();
         LlenarCombo();
+        txtID.setTransferHandler(null);
+        txtNombre.setTransferHandler(null);
+        txtCorreo.setTransferHandler(null);
+        txtDireccion.setTransferHandler(null);
+        txtSueldo.setTransferHandler(null);
     }
 
     public void LlenarCombo()
@@ -43,7 +48,7 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
         cmbGenero = new javax.swing.JComboBox();
         cmbPuestos = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblPuesto = new javax.swing.JLabel();
         Guardar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
@@ -56,6 +61,7 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtID.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
@@ -71,9 +77,11 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
         });
         add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 369, -1));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel1.setText("Identidad del empleado");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
 
+        Buscar.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         Buscar.setText("Buscar");
         Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -85,22 +93,27 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
                 BuscarActionPerformed(evt);
             }
         });
-        add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, -1, -1));
+        add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, -1, -1));
 
+        cmbGenero.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         cmbGenero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGenero.setEnabled(false);
         add(cmbGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 369, -1));
 
+        cmbPuestos.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         cmbPuestos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbPuestos.setEnabled(false);
         add(cmbPuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, 369, -1));
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel2.setText("Genero");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 134, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 134, -1));
 
-        jLabel3.setText("Puesto");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
+        lblPuesto.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        lblPuesto.setText("Puesto");
+        add(lblPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, -1, -1));
 
+        Guardar.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         Guardar.setText("Guardar");
         Guardar.setEnabled(false);
         Guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,8 +121,9 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
                 GuardarActionPerformed(evt);
             }
         });
-        add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, -1, -1));
+        add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, 50));
 
+        txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtNombre.setEnabled(false);
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -118,6 +132,7 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
         });
         add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 369, -1));
 
+        txtCorreo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtCorreo.setEnabled(false);
         txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -126,6 +141,7 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
         });
         add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 369, -1));
 
+        txtDireccion.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtDireccion.setEnabled(false);
         txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -134,6 +150,7 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
         });
         add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 369, -1));
 
+        txtSueldo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtSueldo.setEnabled(false);
         txtSueldo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -142,17 +159,21 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
         });
         add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 369, -1));
 
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel4.setText("Sueldo del Empleado");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel5.setText("Direccion Empleado");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel6.setText("Correo del Empleado");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel7.setText("Nombre del Empleado");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
@@ -189,6 +210,16 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
             txtSueldo.setText(con.SueldoEmpleado(txtID.getText()));
             txtSueldo.setEnabled(true);
             cmbPuestos.setSelectedIndex(Integer.parseInt(con.PuestoEmpleado(txtID.getText()))-1);
+            if(con.PuestoEmpleado(txtID.getText()).equals("1")){
+                lblPuesto.setVisible(false);
+                cmbPuestos.setVisible(false);
+                
+            }
+            else{
+                lblPuesto.setVisible(true);
+                cmbPuestos.setVisible(true);
+                
+            }
             cmbPuestos.setEnabled(true);
             cmbGenero.setSelectedIndex(Integer.parseInt(con.GeneroEmpleado(txtID.getText()))-1);
             cmbGenero.setEnabled(true);
@@ -203,7 +234,7 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
-         String [] errores= new String [5];
+         String [] errores= new String [10];
         Integer cant=0;
         if(!txtID.getText().matches("^[0-9]{13}$")){
                 txtID.setText("");
@@ -240,6 +271,7 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
             errores[cant]="Escoja un puesto";
             cant++;
         }
+        
         if(cant!=0){
             JOptionPane.showMessageDialog(null,errores);
         }
@@ -325,11 +357,11 @@ public class modificarEmpleado_frm extends javax.swing.JPanel {
     private javax.swing.JComboBox cmbPuestos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblPuesto;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtID;

@@ -292,22 +292,25 @@ public class Principal_frm extends javax.swing.JFrame {
                 puesto_btn.setVisible(true);
                 usuarios_btn.setVisible(true);
                 restart_btn.setVisible(true);
+                empleados_btn.setVisible(true);
                 
             }
             //Nivel Medio
             if(ConexionBD.Nivel_Autoridad.equals("3")){
                 consultas_btn.setVisible(true);
-                puesto_btn.setVisible(true);
+                puesto_btn.setVisible(false);
                 usuarios_btn.setVisible(true);
                 restart_btn.setVisible(true);
-                
+                empleados_btn.setVisible(false);
             }
             //Nivel Bajo
             if(ConexionBD.Nivel_Autoridad.equals("4")){
-                consultas_btn.setVisible(true);
+                consultas_btn.setVisible(false);
                 puesto_btn.setVisible(false);
                 usuarios_btn.setVisible(true);
-                restart_btn.setVisible(true); 
+                restart_btn.setVisible(true);
+                empleados_btn.setVisible(false);
+                
             }
             }
             else{

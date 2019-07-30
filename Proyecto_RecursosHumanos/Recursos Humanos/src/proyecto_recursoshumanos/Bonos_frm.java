@@ -24,6 +24,7 @@ public class Bonos_frm extends javax.swing.JPanel {
      */
     public Bonos_frm() {
         initComponents();
+        txtBono.setTransferHandler(null);
         MostrarEmpleados();
     }
 
@@ -164,7 +165,7 @@ public class Bonos_frm extends javax.swing.JPanel {
                 errores[cant]="Seleccione a un empleado para asignarle un bono";
                 cant++;             
             }
-            if(txtBono.getText().matches("(\\d)(?=(\\d{3})+)")){
+            if(!txtBono.getText().matches("^([1-9]{1})+([0-9]{2,})+.??([0-9]{1,})$")){
                 errores[cant]="Asigne un bono mayor a 100";
                 cant++;              
             }
